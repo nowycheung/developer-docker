@@ -23,4 +23,3 @@ source "${GITAWAREPROMPT}/main.sh"
 
 export PS1="\n\[${COLOR_LIGHT_GREEN}\]DEV-DOCK \[${COLOR_LIGHT_BLUE}\]\${PWD} \[${COLOR_YELLOW}\]\$git_branch \[${COLOR_RED}\]\$git_dirty \n\[${COLOR_LIGHT_GREEN}\]→\[${COLOR_NC}\] "  
 
-#~/.bashrc

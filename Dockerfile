@@ -8,7 +8,7 @@ RUN add-apt-repository -y ppa:mozillateam/firefox-next
 
 
 # TOOLS
-RUN apt-get install -y -q build-essential sudo curl wget vim git python
+RUN apt-get install -y -q build-essential screen sudo curl wget vim git python
 
 
 # VNC
@@ -43,6 +43,7 @@ RUN mkdir -p /home/devdoc/.git-aware-prompt/
 COPY ./.files/git-aware-prompt/ /home/devdoc/.git-aware-prompt/
 COPY ./.files/.bash_profile /home/devdoc/
 COPY ./.files/.bashrc /home/devdoc/
+COPY ./.files/.screenrc /home/devdoc/.screenrc
 
 USER root
 EXPOSE 3000 3001 4444 5999

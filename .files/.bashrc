@@ -1,6 +1,7 @@
 #!/bin/bash
 source ./.bash_profile
 
+
 clear
 echo Welcome $(whoami)
 echo
@@ -12,18 +13,24 @@ x11vnc -passwd vnc -shared -display :99 -N -forever > /dev/null 2>&1 &
 echo VNC started on port 5999 with password vnc
 echo
 echo Selenium starting
-selenium-standalone start > /dev/null 2>&1 &
+# Move the selenium into screen tab 3
+# selenium-standalone start > /dev/null 2>&1 &
 echo Selenium started on port 4444
 echo
 echo Tips :
+echo - Hit "Ctrl+a, then escape" + "Ctrl+u"/"Ctrl+d" to scroll up/down in screen mode
 echo - Hit "Ctrl+p+q" to detach, or "Ctrl+q" to quit
 echo - Use ~/workspace folder to start your work
 echo - "<HOST>./workspace" folder mounted to "<DOCKER>~/workspace"
-echo - Run "'sh ~/workspace/build-fe.sh'" to build Community Hub FE
-
-
-
-
 
 echo
 
+if [ -z "$STARTED_SCREEN" ]
+then
+  case $- in
+    (*i*)
+      STARTED_SCREEN=1; export STARTED_SCREEN
+      screen -RR -U -S main  ||
+        echo >&2 "Screen failed! continuing with normal bash startup"
+  esac
+fi
