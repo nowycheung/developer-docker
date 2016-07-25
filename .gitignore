@@ -1,0 +1,17 @@
+node_modules/*
+!node_modules/node-sass/*
+build/
+.idea/
+static/dist/
+nbproject/
+coverage/
+
+workspace/*
+!workspace/*.sh
+
+*.iml
+webpack-assets.json
+webpack-stats.json
+npm-debug.log
+.DS_Store
+tests.webpack.js.map
