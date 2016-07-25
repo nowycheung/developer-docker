@@ -29,26 +29,26 @@ RUN apt-get install -y -q firefox
 RUN apt-get install -y -q google-chrome-stable
 
 # Create sudo account
-RUN useradd -m devdoc && echo "devdoc:devdoc" | chpasswd && adduser devdoc sudo
-RUN chown -R devdoc /home/devdoc
-RUN chgrp -R devdoc /home/devdoc
+RUN useradd -m devdock && echo "devdock:devdock" | chpasswd && adduser devdock sudo
+RUN chown -R devdock /home/devdock
+RUN chgrp -R devdock /home/devdock
 
 # Selenium + Phantomjs
 RUN npm config set unsafe-perm true
 RUN npm install -g selenium-standalone@latest phantomjs-prebuilt@2.1.4 && selenium-standalone install
 
-RUN mkdir -p /home/devdoc/workspace
-RUN mkdir -p /home/devdoc/.git-aware-prompt/
+RUN mkdir -p /home/devdock/workspace
+RUN mkdir -p /home/devdock/.git-aware-prompt/
 
-COPY ./.files/git-aware-prompt/ /home/devdoc/.git-aware-prompt/
-COPY ./.files/.bash_profile /home/devdoc/
-COPY ./.files/.bashrc /home/devdoc/
-COPY ./.files/.screenrc /home/devdoc/.screenrc
+COPY ./.files/git-aware-prompt/ /home/devdock/.git-aware-prompt/
+COPY ./.files/.bash_profile /home/devdock/
+COPY ./.files/.bashrc /home/devdock/
+COPY ./.files/.screenrc /home/devdock/.screenrc
 
 USER root
 EXPOSE 3000 3001 4444 5999
 
-#ENTRYPOINT ["sh", "/home/devdoc/_startSelenium.sh", ">", "/dev/null", "2>&1", "&"]
-#ENTRYPOINT ["sh", "/home/devdoc/_startSelenium.sh"]
+#ENTRYPOINT ["sh", "/home/devdock/_startSelenium.sh", ">", "/dev/null", "2>&1", "&"]
+#ENTRYPOINT ["sh", "/home/devdock/_startSelenium.sh"]
 
 
